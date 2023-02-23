@@ -6,7 +6,7 @@ export interface Professor {
   id: number;
   lastname: string;
   firstname: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   subjects: Subject[];
   principalClass: Classgroup;
   establishment: Establishment;
