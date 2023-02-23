@@ -1,1 +1,43 @@
-<p>add-subject works!</p>
+<h3>Ajouter un matiére </h3>
+<ul *ngIf="formSubmitted">
+
+  <li *ngIf="subjectForm.controls['name'].errors?.['required']"> entree un matiére !</li>
+  <li *ngIf="subjectForm.controls['color'].errors?.['required']"> choisi une couleur </li>
+  <li *ngIf="subjectForm.controls['professor'].errors?.['required']"> entrer un professeur</li>
+</ul>
+
+<form [formGroup]="subjectForm" (ngSubmit)="submitForm()">
+
+<div class="form-group">
+  <label for="name"> matiére </label>
+  <input type="text" id="name" formControlName="name" class="form-control">
+</div>
+
+  <fieldset >
+    <legend> couleur de la matiére :</legend>
+    <div class="form-group form-check">
+      <label for="color"> choisir une couleur </label>
+      <select type="checkbox" id="color" formControlName="severite"  >
+        <option [style.color]="'black' " value="FATAL">FATAL</option>
+        <option [style.color]="'grey' " value="ERROR">ERROR</option>
+        <option [style.color]="'red' " value="HIGH">HIGH</option>
+        <option [style.color]="'orange' " value="MEDIUM">MEDIUM</option>
+        <option [style.color]="'Yellow' " value="MINOR">MINOR</option>
+      </select>
+    </div>
+
+  </fieldset>
+
+  <fieldset formGroupName="professor">
+    <legend> la liste des professeurs :</legend>
+    <div>
+      <label for="id"> choisir les professeurs </label>
+      <select type="checkbox" id="id" formControlName="id" >
+        <option *ngFor=" let p of professors " [value]="p.id"> {{p.subjects}}</option>
+      </select>
+
+    </div>
+
+  </fieldset>
+
+</form>
