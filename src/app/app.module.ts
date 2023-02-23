@@ -28,6 +28,7 @@ import { AddProfessorComponent } from './professor-components/add-professor/add-
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {RouterModule} from "@angular/router";
   imports: [BrowserModule, AppRoutingModule,  FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule],
+    RouterModule,
+    NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 

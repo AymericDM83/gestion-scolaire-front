@@ -7,23 +7,23 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ProfessorService {
-  url = "http://localhost:8090/";
+  url = "http://localhost:8090/api/professors/";
 
   constructor(private readonly http: HttpClient) { }
   findAll(): Observable<Professor[]> {
-    return this.http.get<Professor[]>(`${this.url}/all`);
+    return this.http.get<Professor[]>(`${this.url}`);
   }
 
   findOne(id: number): Observable<Professor> {
-    return this.http.get<Professor>(`${this.url}/${id}`);
+    return this.http.get<Professor>(`${this.url}${id}`);
   }
 
   add(value: Professor): Observable<Professor>{
-    return this.http.post<Professor>(`${this.url}/add`,value);
+    return this.http.post<Professor>(`${this.url}`,value);
 
   }
 
   remove(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${id}`);
+    return this.http.delete<void>(`${this.url}${id}`);
   }
 }
