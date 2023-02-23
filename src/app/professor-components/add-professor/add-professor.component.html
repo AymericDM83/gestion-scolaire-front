@@ -22,16 +22,15 @@
     <label for="dateOfBirth"> Date de naissance </label>
     <input type="date" id="dateOfBirth"  value="1900-01-01" formControlName="dateOfBirth" class="form-control">
   </div>
-<!--
 
+<!--
   <fieldset formGroupName="subjects">
     <legend> les matiére :</legend>
     <div>
       <label for="id"> choisi les matiere</label>
       <select type="checkbox" id="id" formControlName="id" >
-        <option [style.color]="'black' " value="FATAL"> 1</option>
-        <option [style.color]="'red' " value="FATAL"> 2</option>
-        <option [style.color]="'yellow' " value="FATAL"> 3</option>
+        <option *ngFor=" let s of subjects " [value]="s.id"> {{s.professor}}</option>
+
       </select>
 
     </div>

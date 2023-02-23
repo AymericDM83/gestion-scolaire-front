@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {Subject} from "../../../model/subject.model";
 import {Classgroup} from "../../../model/classgroup.model";
 import {Establishment} from "../../../model/establishment.model";
+import {SubjectService} from "../../subject.service";
 
 @Component({
   selector: 'app-add-professor',
@@ -14,8 +15,10 @@ import {Establishment} from "../../../model/establishment.model";
 export class AddProfessorComponent implements  OnInit{
   professorForm!: FormGroup
   formSubmitted = false;
+  subjects: Subject[] = []
   constructor(private formBuilder: FormBuilder,
               private professorService: ProfessorService,
+              private subjectService: SubjectService,
               private router: Router
 
   ) {
@@ -25,12 +28,10 @@ export class AddProfessorComponent implements  OnInit{
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
-     /* subjects: this.formBuilder.group({id : null}),
-      principalClass: this.formBuilder.group({id:null}),
-      establishment: this.formBuilder.group({id: null})*/
-      }
+    /* subjects: this.formBuilder.group({id : null}),*/
+      })
 
-    )
+   // this.subjectService.findAll().subscribe(ProfSubject => this.subjects = ProfSubject)
   }
 
   submitForm() {
