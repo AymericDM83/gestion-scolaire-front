@@ -1,1 +1,7 @@
-<p>classgroup-list works!</p>
+<h1> Liste des classe : </h1>
+
+<button  type="button" class="btn btn-outline-dark"  routerLink="add"> Ajouter une classe </button>
+
+<div class="prof-list">
+  <app-classgroup [routerLink]="['/classgroups',classgroup.id]" *ngFor="let classgroup of classgroups" [classgroup]="classgroup" >{{classgroup?.name}} </app-classgroup>
+</div>
