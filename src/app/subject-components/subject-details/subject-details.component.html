@@ -1,4 +1,5 @@
 <h1 >Description de la matiére: {{subject?.name}} </h1>
+<button type="button" class="btn btn-outline-dark" [routerLink]="['/establishments/', eId, '\subjects']"> Retour de la liste des matiéres </button>
 <ul>
 
   <li> <b> Idenfication: </b>  {{subject?.id}} </li>
@@ -25,3 +26,5 @@
   </div>
 </ng-template>
 <button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer </button>
+
+

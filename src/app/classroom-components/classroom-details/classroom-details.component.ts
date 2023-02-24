@@ -19,19 +19,20 @@ export class ClassroomDetailsComponent implements OnInit {
     private modalService: NgbModal,
     private classroomService: ClassroomService
   ) {}
-
+  eId = this.activatedRoot.snapshot.paramMap.get('eId');
   ngOnInit(): void {
-    const id = this.activatedRoot.snapshot.paramMap.get('id');
-    if (id) {
+    const crId = this.activatedRoot.snapshot.paramMap.get('crId');
+    if (crId) {
       this.classroomService
-        .findOne(Number(id))
+        .findOne(Number(crId))
         .subscribe((classroom) => (this.classroom = classroom));
     }
   }
   removProduct() {
+    const eId = this.activatedRoot.snapshot.paramMap.get('eId');
     this.classroomService.remove(this.classroom.id).subscribe(() => {
       this.currentModal?.close();
-      this.router.navigateByUrl(`/classrooms`);
+      this.router.navigateByUrl(`/establishments/${eId}/classrooms`);
     });
   }
   open(content: any) {

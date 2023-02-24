@@ -18,18 +18,20 @@ export class SubjectDetailsComponent implements OnInit {
     private modalService: NgbModal,
     private subjectService: SubjectService
   ) {}
+  eId = this.activatedRoot.snapshot.paramMap.get('eId');
   ngOnInit(): void {
-    const id = this.activatedRoot.snapshot.paramMap.get('id');
-    if (id) {
+    const sId = this.activatedRoot.snapshot.paramMap.get('sId');
+    if (sId) {
       this.subjectService
-        .findOne(Number(id))
+        .findOne(Number(sId))
         .subscribe((subject) => (this.subject = subject));
     }
   }
   removProduct() {
+    const eId = this.activatedRoot.snapshot.paramMap.get('eId');
     this.subjectService.remove(this.subject.id).subscribe(() => {
       this.currentModal?.close();
-      this.router.navigateByUrl(`/subjects`);
+      this.router.navigateByUrl(`/establishments/${eId}/subjects`);
     });
   }
   open(content: any) {

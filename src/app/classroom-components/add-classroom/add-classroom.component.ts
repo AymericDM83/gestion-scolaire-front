@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ClassroomService } from '../../services/classroom.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class AddClassroomComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private classroomService: ClassroomService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.classForm = this.formBuilder.group({
@@ -23,11 +24,12 @@ export class AddClassroomComponent implements OnInit {
     });
   }
   submitForm() {
+    const eId = this.activatedRoute.snapshot.paramMap.get('eId');
     this.formSubmitted = true;
     if (this.classForm.valid) {
       this.classroomService
         .add(this.classForm.value)
-        .subscribe((p) => this.router.navigateByUrl(`/classrooms`));
+        .subscribe((p) => this.router.navigateByUrl(`establishments/${eId}/classrooms`));
     }
   }
 }

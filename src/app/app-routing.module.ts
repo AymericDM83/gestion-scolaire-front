@@ -33,12 +33,12 @@ const routes: Routes = [
     component: ProfessorDetailsComponent,
   },
   {
-    path: 'establishments/:eId/establishments/:id/subjects',
+    path: 'establishments/:eId/subjects',
     component: SubjectListComponent,
   },
   { path: 'establishments/:eId/subjects/add', component: AddSubjectComponent },
   {
-    path: 'establishments/:eId/subjects/:id',
+    path: 'establishments/:eId/subjects/:sId',
     component: SubjectDetailsComponent,
   },
   {
@@ -50,7 +50,7 @@ const routes: Routes = [
     component: AddClassgroupComponent,
   },
   {
-    path: 'establishments/:eId/classgroups/:id',
+    path: 'establishments/:eId/classgroups/:cgId',
     component: ClassgroupDetailsComponent,
   },
   { path: 'establishments/:eId/classrooms', component: ClassroomListComponent },
@@ -59,7 +59,7 @@ const routes: Routes = [
     component: AddClassroomComponent,
   },
   {
-    path: 'establishments/:eId/classrooms/:id',
+    path: 'establishments/:eId/classrooms/:crId',
     component: ClassroomDetailsComponent,
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
