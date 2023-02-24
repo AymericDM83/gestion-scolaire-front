@@ -1,1 +1,29 @@
-<p>professor-details works!</p>
+<p>description de professeure: {{professor?.firstname}} {{professor?.lastname}}</p>
+<ul>
+
+  <li> <b> Idenfication: </b>  {{professor?.id}} </li>
+  <li> <b> Nom: </b> {{professor?.firstname}}</li>
+  <li><b> Prénom: </b> {{professor?.lastname}}</li>
+  <li> <b> Date de naissance: </b> {{professor?.dateOfBirth}}</li>
+  <li><b> la classe principale: </b> {{professor?.principalClass}}</li>
+  <li><b> Etablissement: </b> {{professor?.establishment}}</li>
+  <li><b> les / la matiere: </b> {{professor?.subjects}}</li>
+</ul>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        VOULEZ-VOUS VRAIMENT SUPPRIMER LE PROFESSEUR ?
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="removProduct()">Oui</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Non</button>
+
+  </div>
+</ng-template>
+<button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer le professeur </button>

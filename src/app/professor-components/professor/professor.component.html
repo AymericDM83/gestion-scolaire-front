@@ -1,1 +1,17 @@
-<p>professor works!</p>
+<div class="card  "  style="width: 18rem;" >
+  <div class="card-header text-center "    >
+    {{professor?.lastname }}  {{professor?.firstname}}
+  </div>
+  <div class="card-body">
+
+      <ul class="card-text">
+    <li>  Idenfication : {{professor?.id }}</li>
+    <li>  class principal:  {{professor?.principalClass}}</li>
+  </ul>
+
+
+    <a [routerLink]="['/professors/'+ professor?.id] " class="btn btn-primary"  > Voir plus des details</a>
+  </div>
+
+  </div>
+

@@ -1,1 +1,27 @@
-<p>classroom-details works!</p>
+<p>description de class:  {{classroom?.name}}</p>
+<ul>
+
+  <li> <b> Idenfication: </b>  {{classroom?.id}} </li>
+  <li> <b> capacity: </b> {{classroom.capacity}}</li>
+  <li> <b> Etablissemnt: </b> {{classroom.establishment.name}}</li>
+
+</ul>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supression de classe</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        VOULEZ-VOUS VRAIMENT CETTE CLASSE?
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="removProduct()">Oui</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Non</button>
+
+  </div>
+</ng-template>
+<button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer   </button>
