@@ -1,7 +1,10 @@
 <p>description de professeure: {{professor?.firstname}} {{professor?.lastname}}</p>
+
+<button [routerLink]="['/establishments/', eId, '\professors']"> Retour à la liste des professeurs </button>
+
 <ul>
 
-  <li> <b> Idenfication: </b>  {{professor?.id}} </li>
+  <li> <b> Idenfication: </b> {{professor?.id}} </li>
   <li> <b> Nom: </b> {{professor?.firstname}}</li>
   <li><b> Prénom: </b> {{professor?.lastname}}</li>
   <li> <b> Date de naissance: </b> {{professor?.dateOfBirth}}</li>
