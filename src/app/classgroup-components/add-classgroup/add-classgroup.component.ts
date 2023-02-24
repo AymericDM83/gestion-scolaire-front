@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProfessorService} from "../../services/professor.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ClassgroupService} from "../../services/classgroup.service";
 import {Professor} from "../../../model/professor.model";
 import {Establishment} from "../../../model/establishment.model";
@@ -24,7 +24,8 @@ export class AddClassgroupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private classgroupService: ClassgroupService,
               private router: Router,
-              private professorService: ProfessorService
+              private professorService: ProfessorService,
+              private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -39,10 +40,11 @@ export class AddClassgroupComponent implements OnInit {
   }
 
   submitForm() {
+    const eId = this.activatedRoute.snapshot.paramMap.get('eId');
     this.formSubmitted = true
     if (this.classgroupForm.valid) {
       this.classgroupService.add(this.classgroupForm.value)
-        .subscribe(p => this.router.navigateByUrl(`/classgroups`))
+        .subscribe(p => this.router.navigateByUrl(`establishments/${eId}/classgroups`))
     }
   }
 }

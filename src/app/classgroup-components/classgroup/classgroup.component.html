@@ -1,1 +1,18 @@
-<h3>{{classgroup?.name}} </h3>
+
+<div class="card style " >
+  <div class="card-header  text-center" >
+    {{classgroup?.id }} : {{classgroup?.name}}
+  </div>
+  <div class="card-body">
+
+    <ul class="card-text">
+      <li> Idenfication : {{classgroup?.id }} </li>
+      <li> Matiére:  {{classgroup.name}} </li>
+    </ul>
+
+  </div>
+  <div class="card-footer text-muted">
+    <a [routerLink]="[classgroup?.id]" class="btn" >  voir plus </a>
+  </div>
+
+</div>

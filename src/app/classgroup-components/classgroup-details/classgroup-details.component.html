@@ -1,5 +1,29 @@
 <h3>{{classgroup?.name}}</h3>
+<button type="button" class="btn btn-outline-dark" [routerLink]="['/establishments/', eId, '\classgroups']"> Retour de la liste des salles </button>
+
 <ul>
-  <li>{{classgroup?.principalProfessor}}</li>
-  <li>{{classgroup?.establishment}}</li>
+
+  <li>{{classgroup?.id}}</li>
+  <li>{{classgroup?.name}}</li>
+  <li> pp :{{classgroup?.principalProfessor?.lastname}}</li>
+  <li>etablissement :{{classgroup?.establishment?.id}}</li>
 </ul>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supression de la salle</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        VOULEZ-VOUS VRAIMENT SUPPRIMER LA SALLE ?
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="removProduct()">Oui</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Non</button>
+
+  </div>
+</ng-template>
+<button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer la salle </button>
