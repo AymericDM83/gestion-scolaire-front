@@ -1,1 +1,30 @@
-<p>subject-details works!</p>
+<h1 >Description de la matiére: {{subject?.name}} </h1>
+<button type="button" class="btn btn-outline-dark" [routerLink]="['/establishments/', eId, '\subjects']"> Retour de la liste des matiéres </button>
+<ul>
+
+  <li> <b> Idenfication: </b>  {{subject?.id}} </li>
+  <li> <b> matiéte: </b> {{subject?.name}}</li>
+  <li><b> Les prpfesseurs : </b> {{subject?.professor}}</li>
+  <li><b> Couleur: </b> {{subject?.color}}</li>
+
+</ul>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"> Supression se matiéte </h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+       vous ete sure de supprimer la matiere ?
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="removProduct()">Oui</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Non</button>
+
+  </div>
+</ng-template>
+<button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer </button>
+
+

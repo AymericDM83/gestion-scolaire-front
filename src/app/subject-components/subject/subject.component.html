@@ -1,1 +1,16 @@
-<p>subject works!</p>
+<div class="card style " [ngClass]="'border-'+SubjectColor">
+  <div class="card-header text-white  text-center"   [ngClass]="'bg-'+SubjectColor">
+    {{subject?.id }} : {{subject?.name}}
+  </div>
+  <div class="card-body">
+
+    <ul class="card-text">
+     <li> Idenfication : {{subject?.id }} </li>
+      <li> Matiére:  {{subject?.name}} </li>
+    </ul>
+
+  </div>
+  <div class="card-footer text-muted">
+    <a [routerLink]="[subject?.id]" class="btn text-white" [ngClass]="'btn-'+SubjectColor">  voir plus </a>
+  </div>
+</div>
