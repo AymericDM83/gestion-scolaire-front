@@ -2,8 +2,11 @@
 <button type="button" class="btn btn-outline-dark" [routerLink]="['/establishments/', eId, '\classgroups']"> Retour de la liste des salles </button>
 
 <ul>
-  <li>{{classgroup?.principalProfessor}}</li>
-  <li>{{classgroup?.establishment}}</li>
+
+  <li>{{classgroup?.id}}</li>
+  <li>{{classgroup?.name}}</li>
+  <li> pp :{{classgroup?.principalProfessor?.lastname}}</li>
+  <li>etablissement :{{classgroup?.establishment?.id}}</li>
 </ul>
 
 <ng-template #content let-modal>

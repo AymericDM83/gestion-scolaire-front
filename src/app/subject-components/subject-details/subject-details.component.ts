@@ -21,7 +21,7 @@ export class SubjectDetailsComponent implements OnInit {
   eId = this.activatedRoot.snapshot.paramMap.get('eId');
   ngOnInit(): void {
     const sId = this.activatedRoot.snapshot.paramMap.get('sId');
-    if (sId) {
+    if(sId) {
       this.subjectService
         .findOne(Number(sId))
         .subscribe((subject) => (this.subject = subject));

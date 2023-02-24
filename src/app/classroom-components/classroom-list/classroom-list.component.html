@@ -1,4 +1,6 @@
-<p>La liste des classes</p>
+<p>La liste des salles</p>
+<button  type="button" class="btn btn-outline-dark"  routerLink="add"> Ajouter une salle </button>
+
 <div class="class-list">
   <app-classroom *ngFor=" let class of classrooms" [classroom]="class" >  </app-classroom>
 </div>
