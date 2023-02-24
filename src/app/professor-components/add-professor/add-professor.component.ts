@@ -16,6 +16,8 @@ export class AddProfessorComponent implements OnInit {
   professorForm!: FormGroup;
   formSubmitted = false;
   subjects: Subject[] = [];
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
+
   constructor(
     private formBuilder: FormBuilder,
     private professorService: ProfessorService,

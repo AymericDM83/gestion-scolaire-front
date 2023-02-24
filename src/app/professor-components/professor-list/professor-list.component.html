@@ -1,6 +1,6 @@
-<h1> La liste de professeurs: </h1>
-<button routerLink="add"> Ajouter un professeur </button>
-<button [routerLink]="['/establishments/', eId]"> Retour à l'accueil de l'établissement </button>
+<h2> Liste des professeurs de l'établissement </h2>
+<button class="backBtn" [routerLink]="['/establishments/', eId]"> Retour à l'accueil de l'établissement </button>
 <div class="prof-list">
   <app-professor *ngFor=" let professor of professors" [professor]="professor"> </app-professor>
 </div>
+<button routerLink="add"> Ajouter un professeur </button>

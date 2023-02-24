@@ -18,14 +18,14 @@ export class EstablishmentDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
     if (id !== '') {
       this.ests.getOne(+id).subscribe((e) => (this.establishment = e));
     }
   }
 
   deleteOne() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
     if (id !== '') {
       this.ests.deleteOne(+id).subscribe(() => this.router.navigateByUrl('/'));
     }

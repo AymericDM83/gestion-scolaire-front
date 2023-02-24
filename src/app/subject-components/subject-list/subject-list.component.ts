@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { SubjectService } from 'src/app/services/subject.service';
 import { Subject } from '../../../model/subject.model';
 
@@ -9,7 +10,12 @@ import { Subject } from '../../../model/subject.model';
 })
 export class SubjectListComponent implements OnInit {
   subjects: Subject[] = [];
-  constructor(private subjectService: SubjectService) {}
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
+
+  constructor(
+    private subjectService: SubjectService,
+    private activatedRoute: ActivatedRoute
+  ) {}
   ngOnInit(): void {
     this.subjectService
       .findAll()

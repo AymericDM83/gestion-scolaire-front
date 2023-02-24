@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClassroomService } from '../../services/classroom.service';
 
 @Component({
@@ -11,6 +11,8 @@ import { ClassroomService } from '../../services/classroom.service';
 export class AddClassroomComponent implements OnInit {
   classForm!: FormGroup;
   formSubmitted = false;
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
+
   constructor(
     private formBuilder: FormBuilder,
     private classroomService: ClassroomService,
@@ -29,7 +31,9 @@ export class AddClassroomComponent implements OnInit {
     if (this.classForm.valid) {
       this.classroomService
         .add(this.classForm.value)
-        .subscribe((p) => this.router.navigateByUrl(`establishments/${eId}/classrooms`));
+        .subscribe((p) =>
+          this.router.navigateByUrl(`establishments/${eId}/classrooms`)
+        );
     }
   }
 }

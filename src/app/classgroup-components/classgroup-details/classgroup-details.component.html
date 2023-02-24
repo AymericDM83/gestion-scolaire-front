@@ -1,13 +1,17 @@
-<h3>{{classgroup?.name}}</h3>
-<button type="button" class="btn btn-outline-dark" [routerLink]="['/establishments/', eId, '\classgroups']"> Retour de la liste des salles </button>
+<button type="button" class="backBtn" [routerLink]="['/establishments/', eId, '\classgroups']"> Retour de la liste des
+  salles </button>
 
-<ul>
+<div class="classgroupInfos">
+  <h3>{{classgroup?.name}}</h3>
 
-  <li>{{classgroup?.id}}</li>
-  <li>{{classgroup?.name}}</li>
-  <li> pp :{{classgroup?.principalProfessor?.lastname}}</li>
-  <li>etablissement :{{classgroup?.establishment?.id}}</li>
-</ul>
+
+  <ul>
+
+    <li>Id : {{classgroup?.id}}</li>
+    <li> Professeur principal :{{classgroup?.principalProfessor?.lastname}}</li>
+    <li>Etablissement :{{classgroup?.establishment?.id}}</li>
+  </ul>
+</div>
 
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -16,7 +20,7 @@
   <div class="modal-body">
     <form>
       <div class="mb-3">
-        VOULEZ-VOUS VRAIMENT SUPPRIMER LA SALLE ?
+        Voulez-vous vraiment supprimer la salle ?
       </div>
     </form>
   </div>
@@ -26,4 +30,4 @@
 
   </div>
 </ng-template>
-<button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer la salle </button>
+<button type="button" class="deleteBtn" (click)="open(content)"> Supprimer la salle </button>

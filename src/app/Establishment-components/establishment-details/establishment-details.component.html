@@ -1,14 +1,17 @@
 <h1>Gestion scolaire</h1>
-<button routerLink="/"> Retour à la liste des établissements </button>
+<button class="backBtn" routerLink="/"> Retour à la liste des établissements </button>
+<h2> {{establishment?.type}} {{establishment?.name}} </h2>
 <app-navbar></app-navbar>
-<h2> Etablissement {{establishment?.name}} </h2>
 
-<div>
+
+<div class="establishmentInfos">
     <p>Professeurs de l'établissement ICI</p>
     <p>Matières de l'établissement ICI</p>
     <p>Classes de l'établissement ICI</p>
     <p>Salles de classe de l'établissement ICI</p>
 </div>
 
-<button> Modifier l'établissement </button>
-<button> Supprimer l'établissement </button>
+<div class="btnBox">
+    <button> Modifier l'établissement </button>
+    <button class="deleteBtn"> Supprimer l'établissement </button>
+</div>
