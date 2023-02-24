@@ -12,16 +12,9 @@ export class ClassgroupComponent {
   @Input()
   classgroup!:Classgroup;
 
-  @Output()
-  out = new EventEmitter<Classgroup>();
-
   constructor(private router: Router) {
   }
 
-  @HostListener('click')
-  clickOnCompo(){
-    this.router.navigate(['/classgroups/', this.classgroup.id])
-  }
 
 
 

@@ -12,10 +12,10 @@ export class ClassgroupListComponent implements OnInit{
   selectedClassgroup: Classgroup | undefined;
   classgroups: Classgroup[] = [];
 
-  constructor(private productService: ClassgroupService) {}
+  constructor(private classgroupService: ClassgroupService) {}
 
   ngOnInit(): void {
-    this.productService.findAll()
+    this.classgroupService.findAll()
       .subscribe(cgs => this.classgroups = cgs)
   }
 

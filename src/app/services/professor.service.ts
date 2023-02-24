@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Professor} from "../model/professor.model";
+import {Professor} from "../../model/professor.model";
 import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfessorService {
-  url = "http://localhost:8090/api/professors/";
+  url = `http://localhost:8090/api/professors/`;
 
   constructor(private readonly http: HttpClient) { }
   findAll(): Observable<Professor[]> {
@@ -20,7 +20,6 @@ export class ProfessorService {
 
   add(value: Professor): Observable<Professor>{
     return this.http.post<Professor>(`${this.url}`,value);
-
   }
 
   remove(id: number): Observable<void> {

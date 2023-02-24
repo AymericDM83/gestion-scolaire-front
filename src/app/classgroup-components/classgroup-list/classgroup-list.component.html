@@ -1,4 +1,6 @@
-<h2>Classgroup List</h2>
-<app-classgroup></app-classgroup>
+<h1> Liste des classes : </h1>
 
-<!--<app-product *ngFor="let p of getProductsFiltered()"  [product]="p" (out)="receiveProductclicked($event)"></app-product>-->
+
+<div class="prof-list">
+  <app-classgroup [routerLink]="['/classgroups',classgroup.id]" *ngFor="let classgroup of classgroups" [classgroup]="classgroup" >{{classgroup?.name}} </app-classgroup>
+</div>
