@@ -12,9 +12,20 @@ import {AddProfessorComponent} from "./professor-components/add-professor/add-pr
 import {ProfessorDetailsComponent} from "./professor-components/professor-details/professor-details.component";
 import {SubjectListComponent} from "./subject-components/subject-list/subject-list.component";
 import {AddSubjectComponent} from "./subject-components/add-subject/add-subject.component";
+import {SubjectDetailsComponent} from "./subject-components/subject-details/subject-details.component";
+import {ClassgroupListComponent} from "./classgroup-components/classgroup-list/classgroup-list.component";
+import {AddClassroomComponent} from "./classroom-components/add-classroom/add-classroom.component";
+import {ClassroomDetailsComponent} from "./classroom-components/classroom-details/classroom-details.component";
+import {ClassroomListComponent} from "./classroom-components/classroom-list/classroom-list.component";
+import { AddEstablishmentComponent } from './Establishment-components/add-establishment/add-establishment.component';
+import { EstablishmentDetailsComponent } from './Establishment-components/establishment-details/establishment-details.component';
+import { EstablishmentListComponent } from './Establishment-components/establishment-list/establishment-list.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-
+  { path: '', component: HomeComponent },
+  { path: 'establishments/add', component: AddEstablishmentComponent },
+  { path: 'establishments/:id', component: EstablishmentDetailsComponent },
   {path:'professors', component: ProfessorListComponent},
   {path:'professors/add', component: AddProfessorComponent},
   {path:'professors/:id', component: ProfessorDetailsComponent},
@@ -30,8 +41,9 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

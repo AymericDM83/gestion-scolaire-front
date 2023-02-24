@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,10 +27,10 @@ import { ProfessorListComponent } from './professor-components/professor-list/pr
 import { ProfessorComponent } from './professor-components/professor/professor.component';
 import { ProfessorDetailsComponent } from './professor-components/professor-details/professor-details.component';
 import { AddProfessorComponent } from './professor-components/add-professor/add-professor.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { HomeComponent } from './home/home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -55,13 +57,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProfessorComponent,
     ProfessorDetailsComponent,
     AddProfessorComponent,
+    HomeComponent,
   ],
-  imports: [ BrowserModule,
+
+  imports: [
+    BrowserModule,
+
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,],
+    ReactiveFormsModule,
+    NgbModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
