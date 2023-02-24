@@ -1,1 +1,39 @@
-<p>add-establishment works!</p>
+<h2>Ajouter un établissement</h2>
+
+<button routerLink="/"> Retour à l'acceuil </button>
+
+<form [formGroup]="ourForm" (ngSubmit)="submitForm()">
+    <div>
+        <label for="name">Nom de l'établissement</label>
+        <input type="text" id="name" formControlName="name">
+    </div>
+    <div>
+        <label for="adress">Adresse</label>
+        <input type="text" id="adress" formControlName="adress">
+    </div>
+    <div>
+        <label for="type">Type</label>
+        <select id="type" formControlName="type">
+            <option value="ECOLE">Ecole</option>
+            <option value="COLLEGE">Collège</option>
+            <option value="LYCEE">Lycée</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="phoneNumber">Numéro de téléphone</label>
+        <input type="tel" id="phoneNumber" formControlName="phoneNumber">
+    </div>
+
+    <!-- <div>
+        <label for="logo">Logo de létablissement</label>
+        <input type="image" id="logo" formControlName="logo">
+    </div> -->
+
+
+    <button type="submit">Ajouter l'établissement</button>
+
+
+
+
+</form>
