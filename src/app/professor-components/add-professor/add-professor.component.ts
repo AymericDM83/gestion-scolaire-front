@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProfessorService} from "../../professor.service";
+import {ProfessorService} from "../../services/professor.service";
 import {Router} from "@angular/router";
 import {Subject} from "../../../model/subject.model";
 import {Classgroup} from "../../../model/classgroup.model";
