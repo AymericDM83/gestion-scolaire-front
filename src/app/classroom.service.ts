@@ -9,8 +9,8 @@ import {Classroom} from "../model/classroom.model";
 })
 export class ClassroomService {
 
-  url = "http://localhost:8090/api/classrooms/";
-  constructor(private readonly http: HttpClient) { }
+  url = `http://localhost:8090/api/classrooms/`
+  constructor(private http: HttpClient) { }
 
   findAll(): Observable<Classroom[]> {
     return this.http.get<Classroom[]>(`${this.url}`);
