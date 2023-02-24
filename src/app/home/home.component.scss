@@ -1,0 +1,18 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: lightgreen;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+    margin-left: 10px;
+    &:hover {
+        background-color: rgba(144, 238, 144, 0.703);
+    }
+}
