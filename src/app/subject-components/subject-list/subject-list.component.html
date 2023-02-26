@@ -1,5 +1,5 @@
 <p>La liste des matiéres</p>
-<div class="subject-list">
-  <button  type="button" class="btn btn-outline-dark"  routerLink="add"> Ajouter une matiére </button>
+<button  type="button" class="btn btn-outline-dark"  routerLink="add"> Ajouter une matiére </button>
+<div class="example-box" cdkDrag>
 <app-subject *ngFor=" let subject of subjects" [subject]="subject" >  </app-subject>
 </div>
