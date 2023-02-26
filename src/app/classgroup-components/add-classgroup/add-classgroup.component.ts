@@ -32,23 +32,30 @@ export class AddClassgroupComponent implements OnInit {
   ngOnInit(): void {
     this.classgroupForm = this.formBuilder.group({
       name: ['', Validators.required],
-      principalProfessor: [],
-      establishments: [],
+      principalProfessor: this.formBuilder.group({
+        id: '',
+      }),
+      establishment: {
+        id: this.eId,
+      },
     });
-    // this.professorService.findAll().subscribe(allProfessors => this.professors = allProfessors)
-    // Ligne à réactiver pour recevoir la liste des établissements disponibles
-    //this.establishmentService.findAll().subscribe(allEstablishment => this.establishments = allEstablishment)
+    const eId = this.activatedRoute.snapshot.paramMap.get('eId') || '';
+    if (eId !== '') {
+      this.professorService
+        .findByEstablishment(+eId)
+        .subscribe((allProfessors) => {
+          this.professors = allProfessors;
+        });
+    }
   }
 
   submitForm() {
     const eId = this.activatedRoute.snapshot.paramMap.get('eId');
     this.formSubmitted = true;
     if (this.classgroupForm.valid) {
-      this.classgroupService
-        .add(this.classgroupForm.value)
-        .subscribe((p) =>
-          this.router.navigateByUrl(`establishments/${eId}/classgroups`)
-        );
+      this.classgroupService.add(this.classgroupForm.value).subscribe(() => {
+        this.router.navigateByUrl(`establishments/${eId}/classgroups`);
+      });
     }
   }
 }

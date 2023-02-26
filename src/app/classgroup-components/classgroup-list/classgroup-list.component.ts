@@ -19,8 +19,11 @@ export class ClassgroupListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.classgroupService
-      .findAll()
-      .subscribe((cgs) => (this.classgroups = cgs));
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
+    if (id !== '') {
+      this.classgroupService
+        .findByEstablishment(+id)
+        .subscribe((cgs) => (this.classgroups = cgs));
+    }
   }
 }

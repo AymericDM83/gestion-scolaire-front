@@ -10,8 +10,8 @@
     <li> Nom: {{professor?.firstname}}</li>
     <li> Prénom: {{professor?.lastname}}</li>
     <li> Date de naissance: {{professor?.dateOfBirth}}</li>
-    <li> Classe principale: {{professor?.principalClass}}</li>
-    <li> Etablissement: {{professor?.establishment}}</li>
+    <li> Classe principale: {{professor?.principalClass?.name}}</li>
+    <li> Etablissement: {{professor?.establishment?.name}}</li>
     <li> Matière(s): {{professor?.subjects}}</li>
   </ul>
 </div>

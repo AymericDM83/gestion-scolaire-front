@@ -30,6 +30,9 @@ export class AddProfessorComponent implements OnInit {
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
+      establishment: {
+        id: this.eId,
+      },
       /* subjects: this.formBuilder.group({id : null}),*/
     });
 

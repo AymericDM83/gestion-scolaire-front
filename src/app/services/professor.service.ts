@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfessorService {
   url = `http://localhost:8090/api/professors/`;
+  byEstablishmentSuffix = `findbyestablishment/`;
 
   constructor(private http: HttpClient) {}
   findAll(): Observable<Professor[]> {
@@ -16,6 +17,12 @@ export class ProfessorService {
 
   findOne(id: number): Observable<Professor> {
     return this.http.get<Professor>(`${this.url}${id}`);
+  }
+
+  findByEstablishment(id: number): Observable<Professor[]> {
+    return this.http.get<Professor[]>(
+      `${this.url}${this.byEstablishmentSuffix}${id}`
+    );
   }
 
   add(value: Professor): Observable<Professor> {

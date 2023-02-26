@@ -17,8 +17,11 @@ export class ClassroomListComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.classroomService
-      .findAll()
-      .subscribe((allclassrooms) => (this.classrooms = allclassrooms));
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
+    if (id !== '') {
+      this.classroomService
+        .findByEstablishment(+id)
+        .subscribe((allclassrooms) => (this.classrooms = allclassrooms));
+    }
   }
 }

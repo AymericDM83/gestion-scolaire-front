@@ -6,12 +6,12 @@
 
     <ul class="card-text">
       <li> Date de naissance : {{professor?.dateOfBirth}}</li>
-      <li> Classe principale : {{professor?.principalClass}}</li>
+      <li> Classe principale : {{professor?.principalClass?.name}}</li>
       <li> Matières : {{professor?.subjects}}</li>
     </ul>
 
 
-    <a [routerLink]="[professor?.id] " class="btn btn-primary"> Voir plus des
+    <a [routerLink]="[professor?.id] " class="btn btn-primary"> Voir plus de
       details</a>
   </div>
 

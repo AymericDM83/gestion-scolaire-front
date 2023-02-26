@@ -23,6 +23,9 @@ export class AddClassroomComponent implements OnInit {
     this.classForm = this.formBuilder.group({
       name: ['', Validators.required],
       capacity: [0, [Validators.required, Validators.min(10)]],
+      establishment: {
+        id: this.eId,
+      },
     });
   }
   submitForm() {
@@ -31,7 +34,7 @@ export class AddClassroomComponent implements OnInit {
     if (this.classForm.valid) {
       this.classroomService
         .add(this.classForm.value)
-        .subscribe((p) =>
+        .subscribe(() =>
           this.router.navigateByUrl(`establishments/${eId}/classrooms`)
         );
     }

@@ -1,6 +1,6 @@
 <button type="button" class="backBtn" [routerLink]="['/establishments/', eId, '\classrooms']"> Retour à la
   liste des salles de classe </button>
-<h1> Ajouter un classe</h1>
+<h1> Ajouter une salle de classe</h1>
 <ul *ngIf="formSubmitted">
 
   <li *ngIf="classForm.controls['name'].errors?.['required']"> entrer un nom valide !</li>
@@ -16,7 +16,7 @@
   </div>
 
   <div class="form-group">
-    <label for="capacity"> Capacity de classe </label>
+    <label for="capacity"> Capacité de classe </label>
     <input type="number" id="capacity" formControlName="capacity" class="form-control">
   </div>
 

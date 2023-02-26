@@ -16,8 +16,13 @@ export class ProfessorListComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.professorService
-      .findAll()
-      .subscribe((allProfessors) => (this.professors = allProfessors));
+    // METHODE GET BYESTABLISHMENT ---->
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
+
+    if (id !== '') {
+      this.professorService
+        .findByEstablishment(+id)
+        .subscribe((allProfessors) => (this.professors = allProfessors));
+    }
   }
 }
