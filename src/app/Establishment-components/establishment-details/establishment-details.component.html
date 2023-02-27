@@ -5,9 +5,22 @@
 
 <div>
     <p>Professeurs de l'établissement ICI</p>
+      <ul>
+          <li *ngFor="let professor of professors" value="{{professor?.id}}">{{professor?.lastname}}</li>
+      </ul>
+
     <p>Matières de l'établissement ICI</p>
+
     <p>Classes de l'établissement ICI</p>
+      <ul>
+        <li>{{classgroups | json}}</li>
+        <li *ngFor="let classgroup of classgroups" value="{{classgroup?.id}}"> Test{{classgroup?.name}}</li>
+      </ul>
     <p>Salles de classe de l'établissement ICI</p>
+      <ul>
+        <li>{{classrooms | json}}</li>
+        <li *ngFor="let classroom of classrooms" value="{{classroom?.id}}"> Test{{classroom?.name}} - {{classroom?.capacity}} places</li>
+      </ul>
 </div>
 
 <button> Modifier l'établissement </button>
