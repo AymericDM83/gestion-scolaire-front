@@ -26,8 +26,9 @@ import { ProfessorService } from '../../services/professor.service';
 import { SubjectService } from '../../services/subject.service';
 import { CalenderService } from '../../services/calender.service';
 import { SubjectEnumerationColors } from '../../../model/subject.enumeration.colors';
-import { AddEventInCalanderComponent } from '../add-event-in-calendar/add-event-in-calendar.component';
 import { AddEventInfoService } from '../../services/add-event.service';
+import { AddEventInCalendarComponent } from '../add-event-in-calendar/add-event-in-calendar.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-calander',
@@ -37,7 +38,7 @@ import { AddEventInfoService } from '../../services/add-event.service';
 export class CalanderComponent implements OnInit {
   calendarVisible = false;
   calendeForm!: FormGroup;
-
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
   subjects: Subject[] = [];
   professors: Professor[] = [];
   eventsInfos: EventInfo[] = [];
@@ -78,7 +79,8 @@ export class CalanderComponent implements OnInit {
     private professorService: ProfessorService,
     private subjectService: SubjectService,
     private calenderService: CalenderService,
-    private addEventInfoService: AddEventInfoService
+    private addEventInfoService: AddEventInfoService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -129,7 +131,7 @@ export class CalanderComponent implements OnInit {
   }
 
   openAddEventModal(dateInfo: DateSelectArg) {
-    this.currentModal = this.modalService.open(AddEventInCalanderComponent, {
+    this.currentModal = this.modalService.open(AddEventInCalendarComponent, {
       backdrop: 'static',
     });
     this.currentModal.componentInstance.dateInfo = dateInfo;
