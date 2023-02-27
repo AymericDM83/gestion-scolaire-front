@@ -26,14 +26,13 @@ import { ProfessorService } from '../../services/professor.service';
 import { SubjectService } from '../../services/subject.service';
 import { CalenderService } from '../../services/calender.service';
 import { SubjectEnumerationColors } from '../../../model/subject.enumeration.colors';
-import { AddEventInCalanderComponent } from '../add-event-in-calander/add-event-in-calander.component';
-import {AddEventInfoService} from "../../services/add-event.service";
-
+import { AddEventInCalanderComponent } from '../add-event-in-calendar/add-event-in-calendar.component';
+import { AddEventInfoService } from '../../services/add-event.service';
 
 @Component({
   selector: 'app-calander',
-  templateUrl: './calander.component.html',
-  styleUrls: ['./calander.component.scss'],
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalanderComponent implements OnInit {
   calendarVisible = false;
@@ -41,8 +40,8 @@ export class CalanderComponent implements OnInit {
 
   subjects: Subject[] = [];
   professors: Professor[] = [];
-  eventsInfos: EventInfo[] = []
-  eventInfo!: EventInfo
+  eventsInfos: EventInfo[] = [];
+  eventInfo!: EventInfo;
   currentEvents: EventApi[] = [];
   currentModal: NgbModalRef | undefined;
 
@@ -80,7 +79,6 @@ export class CalanderComponent implements OnInit {
     private subjectService: SubjectService,
     private calenderService: CalenderService,
     private addEventInfoService: AddEventInfoService
-
   ) {}
 
   ngOnInit(): void {
@@ -97,8 +95,9 @@ export class CalanderComponent implements OnInit {
     this.professorService.findAll().subscribe((allprofessors) => {
       this.professors = allprofessors;
     });
-this.addEventInfoService.findAll().subscribe((allevents )=> {this.eventsInfos = allevents})
-
+    this.addEventInfoService.findAll().subscribe((allevents) => {
+      this.eventsInfos = allevents;
+    });
   }
 
   handleCalendarToggle() {
@@ -149,6 +148,4 @@ this.addEventInfoService.findAll().subscribe((allevents )=> {this.eventsInfos = 
       }
     });
   }
-
-
 }

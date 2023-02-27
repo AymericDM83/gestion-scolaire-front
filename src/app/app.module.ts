@@ -32,10 +32,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { CalendarComponent } from './Calendar-components/calendar/calendar.component';
 // import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AddEventInCalanderComponent } from './Calendar-components/add-event-in-calendar/add-event-in-calendar.component';
+import { CalanderComponent } from './Calendar-components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,7 @@ import { AddEventInCalanderComponent } from './Calendar-components/add-event-in-
     ProfessorDetailsComponent,
     AddProfessorComponent,
     HomeComponent,
-    CalendarComponent,
+    CalanderComponent,
     AddEventInCalanderComponent,
   ],
 
