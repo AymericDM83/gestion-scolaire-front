@@ -1,17 +1,18 @@
-<div class="card  " style="width: 18rem;">
+<div class="card  ">
   <div class="card-header text-center ">
     {{professor?.lastname }} {{professor?.firstname}}
   </div>
   <div class="card-body">
 
     <ul class="card-text">
-      <li> Idenfication : {{professor?.id }}</li>
-      <li> class principal: {{professor?.principalClass}}</li>
+      <li> Date de naissance : {{professor?.dateOfBirth}}</li>
+      <li> Classe principale : {{professor?.principalClass?.name}}</li>
     </ul>
 
 
-    <a [routerLink]="[professor?.id] " class="btn btn-primary"> Voir plus des
+    <a [routerLink]="[professor?.id] " class="btn btn-primary"> Voir plus de
       details</a>
-  </div>
 
+
+  </div>
 </div>

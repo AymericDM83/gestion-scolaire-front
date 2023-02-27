@@ -1,7 +1,11 @@
-<h1> Liste des classe : </h1>
+<h2> Liste des classe</h2>
 
-<button  type="button" class="btn btn-outline-dark"  routerLink="add"> Ajouter une classe </button>
 
-<div class="prof-list">
-  <app-classgroup [routerLink]="['/classgroups',classgroup.id]" *ngFor="let classgroup of classgroups" [classgroup]="classgroup" >{{classgroup?.name}} </app-classgroup>
+<button class="backBtn" [routerLink]="['/establishments/', eId]"> Retour à l'accueil de l'établissement </button>
+
+<div class="classgroup-list">
+  <app-classgroup [routerLink]="['/classgroups',classgroup.id]" *ngFor="let classgroup of classgroups"
+    [classgroup]="classgroup">{{classgroup?.name}} </app-classgroup>
 </div>
+
+<button type="button" class="btn btn-outline-dark" routerLink="add"> Ajouter une classe </button>

@@ -1,13 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ClassgroupService } from 'src/app/services/classgroup.service';
+import { ClassroomService } from 'src/app/services/classroom.service';
 import { EstablishmentService } from 'src/app/services/establishment.service';
+import { ProfessorService } from 'src/app/services/professor.service';
+import { Classgroup } from 'src/model/classgroup.model';
+import { Classroom } from 'src/model/classroom.model';
 import { Establishment } from 'src/model/establishment.model';
-import {ClassgroupService} from "../../services/classgroup.service";
-import {ClassroomService} from "../../services/classroom.service";
-import {ProfessorService} from "../../services/professor.service";
-import {Classgroup} from "../../../model/classgroup.model";
-import {Classroom} from "../../../model/classroom.model";
-import {Professor} from "../../../model/professor.model";
+import { Professor } from 'src/model/professor.model';
 
 @Component({
   selector: 'app-establishment-details',
@@ -19,32 +20,52 @@ export class EstablishmentDetailsComponent implements OnInit {
   classgroups: Classgroup[] = [];
   classrooms: Classroom[] = [];
   professors: Professor[] = [];
+  currentModal: NgbModalRef | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private ests: EstablishmentService,
-    private classgroupService: ClassgroupService,
-    private classroomService: ClassroomService,
+    private router: Router,
     private professorService: ProfessorService,
-    private router: Router
+    private classroomsService: ClassroomService,
+    private classgroupsService: ClassgroupService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
-    const eId = this.activatedRoute.snapshot.paramMap.get('eId') || '';
-    if (eId !== '') {
-      this.ests.getOne(+eId).subscribe((e) => (this.establishment = e));
-      this.classgroupService.findByEstablishment(+eId).subscribe(e => (this.classgroups = e))
-      this.classroomService.findByEstablishment(+eId).subscribe(e => (this.classrooms = e))
-      this.professorService.findByEstablishment(+eId).subscribe(allProfessors => (this.professors = allProfessors))
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
+    if (id !== '') {
+      this.ests.getOne(+id).subscribe((e) => (this.establishment = e));
+      this.professorService
+        .findByEstablishment(+id)
+        .subscribe((p) => (this.professors = p));
+      this.classroomsService
+        .findByEstablishment(+id)
+        .subscribe((c) => (this.classrooms = c));
+      this.classgroupsService
+        .findByEstablishment(+id)
+        .subscribe((cg) => (this.classgroups = cg));
     }
-
-
   }
 
   deleteOne() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
     if (id !== '') {
       this.ests.deleteOne(+id).subscribe(() => this.router.navigateByUrl('/'));
     }
+  }
+
+  removeEstablishment() {
+    const eId = this.activatedRoute.snapshot.paramMap.get('eId');
+    this.ests.deleteOne(this.establishment.id).subscribe(() => {
+      this.currentModal?.close();
+      this.router.navigateByUrl('/');
+    });
+  }
+
+  open(content: any) {
+    this.currentModal = this.modalService.open(content, {
+      backdrop: 'static',
+    });
   }
 }

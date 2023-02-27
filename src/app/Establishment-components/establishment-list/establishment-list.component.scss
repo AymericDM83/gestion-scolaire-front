@@ -1,16 +1,32 @@
-
+h2 {
+    color: white;
+    margin-bottom: 2%;
+}
 
 div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2%;
     ul {
         padding: 0;
         li {
-            background-color: lightcoral;
             padding: 10px;
+            display: flex;
+            align-items: center;
+            background-color: #d1d5db     ;
             border-radius: 10px;
             list-style-type: none;
             cursor: pointer;
+            color: #4b5563  ;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+            &:hover {
+                background-color: #fed7aa  ;
+                // color: white;
+            }
         }
     }
 }

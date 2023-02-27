@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EstablishmentListComponent } from './Establishment-components/establishment-list/establishment-list.component';
 import { AddEstablishmentComponent } from './Establishment-components/add-establishment/add-establishment.component';
@@ -27,10 +26,16 @@ import { ProfessorListComponent } from './professor-components/professor-list/pr
 import { ProfessorComponent } from './professor-components/professor/professor.component';
 import { ProfessorDetailsComponent } from './professor-components/professor-details/professor-details.component';
 import { AddProfessorComponent } from './professor-components/add-professor/add-professor.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular';
+// import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AppRoutingModule } from './app-routing.module';
+import { AddEventInCalanderComponent } from './Calendar-components/add-event-in-calendar/add-event-in-calendar.component';
+import { CalanderComponent } from './Calendar-components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -58,17 +63,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfessorDetailsComponent,
     AddProfessorComponent,
     HomeComponent,
+    CalanderComponent,
+    AddEventInCalanderComponent,
   ],
 
   imports: [
     BrowserModule,
-
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    FullCalendarModule,
+    // DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

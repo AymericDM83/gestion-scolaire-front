@@ -9,19 +9,25 @@ import {Classgroup} from "../../model/classgroup.model";
 })
 export class ClassroomService {
   url = `http://localhost:8090/api/classrooms/`;
-  urlSuffixFindByEstablishment = 'findbyestablishment/'
+
+  byEstablishmentSuffix = `findbyestablishment/`;
+
+
   constructor(private http: HttpClient) {}
 
   findAll(): Observable<Classroom[]> {
     return this.http.get<Classroom[]>(`${this.url}`);
   }
 
-  findByEstablishment(id:number): Observable<Classroom[]>{
-    return this.http.get<Classroom[]>(`${this.url}${this.urlSuffixFindByEstablishment}${id}`);
-  }
 
   findOne(id: number): Observable<Classroom> {
     return this.http.get<Classroom>(`${this.url}${id}`);
+  }
+
+  findByEstablishment(id: number): Observable<Classroom[]> {
+    return this.http.get<Classroom[]>(
+      `${this.url}${this.byEstablishmentSuffix}${id}`
+    );
   }
 
   add(value: Classroom): Observable<Classroom> {

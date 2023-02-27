@@ -1,27 +1,47 @@
 <h1>Gestion scolaire</h1>
-<button routerLink="/"> Retour à la liste des établissements </button>
+<button class="backBtn" routerLink="/"> Retour à la liste des établissements </button>
+<h2> {{establishment?.type}} {{establishment?.name}} </h2>
 <app-navbar></app-navbar>
-<h2> Etablissement {{establishment?.name}} </h2>
 
-<div>
-    <p>Professeurs de l'établissement ICI</p>
-      <ul>
-          <li *ngFor="let professor of professors" value="{{professor?.id}}">{{professor?.lastname}}</li>
-      </ul>
 
-    <p>Matières de l'établissement ICI</p>
+<div class="establishmentInfos">
+    <div class="establishmentInfos__professors">
+        <p>Liste des professeurs de cet établissement :</p>
+        <ul>
+            <li *ngFor="let p of professors"> {{p?.firstname}} {{p?.lastname}} </li>
+        </ul>
+    </div>
 
-    <p>Classes de l'établissement ICI</p>
-      <ul>
-        <li>{{classgroups | json}}</li>
-        <li *ngFor="let classgroup of classgroups" value="{{classgroup?.id}}"> Test{{classgroup?.name}}</li>
-      </ul>
-    <p>Salles de classe de l'établissement ICI</p>
-      <ul>
-        <li>{{classrooms | json}}</li>
-        <li *ngFor="let classroom of classrooms" value="{{classroom?.id}}"> Test{{classroom?.name}} - {{classroom?.capacity}} places</li>
-      </ul>
+    <div class="establishmentInfos__classrooms">
+        <p>Liste des salles de classes de cet établissement :</p>
+        <ul>
+            <li *ngFor="let c of classrooms"> {{c?.name}} </li>
+        </ul>
+    </div>
+
+    <div class="establishmentInfos__classgroups">
+        <p>Liste des classes de cet établissement :</p>
+        <ul>
+            <li *ngFor="let cg of classgroups"> {{cg?.name}} </li>
+        </ul>
+    </div>
 </div>
 
-<button> Modifier l'établissement </button>
-<button> Supprimer l'établissement </button>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Suppression</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                Voulez-vous vraiment supprimer l'établissement?
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="removeEstablishment()">Oui</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Non</button>
+
+    </div>
+</ng-template>
+<button type="button" class="deleteBtn" (click)="open(content)"> Supprimer l'établissement </button>

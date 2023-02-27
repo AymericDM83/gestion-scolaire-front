@@ -1,15 +1,14 @@
 nav {
-    display: flex;
-    flex-direction: column;
-    background-color: lightblue;
+    background-color: #d1d5db ;
     border-radius: 20px;
     ul {
         display: flex;
         justify-content: space-around;
         align-items: center;
         list-style-type: none;
+        padding: 20px;
         li {
-            background-color: lightcoral;
+            background-color: #4C5760 ;
             color: white;
             font-size: 1.1rem;
             padding: 10px;
@@ -17,7 +16,7 @@ nav {
             cursor: pointer;
             transition: 0.3s all ease-in-out;
             &:hover {
-                background-color: rgba(240, 128, 128, 0.537);
+                background-color: #797c81 ;
             }
         }
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubjectEnumerationColors } from '../../../model/subject.enumeration.colors';
 import { Professor } from '../../../model/professor.model';
 import { ProfessorService } from 'src/app/services/professor.service';
@@ -14,13 +14,15 @@ import { SubjectService } from 'src/app/services/subject.service';
 export class AddSubjectComponent implements OnInit {
   subjectForm!: FormGroup;
   formSubmitted = false;
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
+
   professors: Professor[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private subjectService: SubjectService,
     private professorService: ProfessorService,
     private router: Router,
-  private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +44,9 @@ export class AddSubjectComponent implements OnInit {
     if (this.subjectForm.valid) {
       this.subjectService
         .add(this.subjectForm.value)
-        .subscribe((i) => this.router.navigateByUrl(`establishments/${eId}/subjects`));
+        .subscribe((i) =>
+          this.router.navigateByUrl(`establishments/${eId}/subjects`)
+        );
     }
   }
 }
