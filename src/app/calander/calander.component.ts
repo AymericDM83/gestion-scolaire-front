@@ -21,12 +21,13 @@ import { createEventId, INITIAL_EVENTS } from './event-utils';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from '../../model/subject.model';
 import { Professor } from '../../model/professor.model';
-import { CalenderInfo } from 'src/model/calender.model';
+import { Event } from 'src/model/event.model';
 import { ProfessorService } from '../services/professor.service';
 import { SubjectService } from '../services/subject.service';
 import { CalenderService } from '../services/calender.service';
 import { SubjectEnumerationColors } from '../../model/subject.enumeration.colors';
 import { AddEventInCalanderComponent } from '../add-event-in-calander/add-event-in-calander.component';
+import {AddEventService} from "../services/add-event.service";
 
 @Component({
   selector: 'app-calander',
@@ -39,6 +40,7 @@ export class CalanderComponent implements OnInit {
 
   subjects: Subject[] = [];
   professors: Professor[] = [];
+  Myevent!: Event;
   currentEvents: EventApi[] = [];
   currentModal: NgbModalRef | undefined;
 
@@ -74,7 +76,8 @@ export class CalanderComponent implements OnInit {
     private formBuilder: FormBuilder,
     private professorService: ProfessorService,
     private subjectService: SubjectService,
-    private calenderService: CalenderService
+    private calenderService: CalenderService,
+    private addEventService: AddEventService
   ) {}
 
   ngOnInit(): void {
@@ -88,8 +91,8 @@ export class CalanderComponent implements OnInit {
     this.subjectService.findAll().subscribe((allsubjects) => {
       this.subjects = allsubjects;
     });
-    this.professorService.findAll().subscribe((allprpfessors) => {
-      this.professors = allprpfessors;
+    this.professorService.findAll().subscribe((allprofessors) => {
+      this.professors = allprofessors;
     });
   }
 
@@ -126,14 +129,14 @@ export class CalanderComponent implements OnInit {
       backdrop: 'static',
     });
     this.currentModal.componentInstance.dateInfo = dateInfo;
-    this.currentModal.result.then((calenderInfo) => {
-      if (calenderInfo) {
+    this.currentModal.result.then((Event) => {
+      if (Event) {
         const calendarApi = dateInfo.view.calendar;
         calendarApi.unselect();
-        // this.eventService.addEvent(value); SAVE to database
+
         calendarApi.addEvent({
           id: createEventId(),
-          title: calenderInfo.subject,
+          title: Event.subject,
           start: dateInfo.start,
           end: dateInfo.end,
           allDay: dateInfo.allDay,
