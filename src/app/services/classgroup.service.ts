@@ -9,15 +9,24 @@ import {Professor} from "../../model/professor.model";
 })
 export class ClassgroupService {
   url = `http://localhost:8090/api/classgroups/`
+  urlSuffixFindByEstablishment = 'findbyestablishment/'
 
   constructor(private http: HttpClient) { }
+
 
   private classgroups: Classgroup[] = []
 
   findAll(): Observable<Classgroup[]> {
     return this.http.get<Classgroup[]>(`${this.url}`);
   }
-  // Problème ici lorsqu'on veut ajouter un prof avec, probablement dans la formation du Json
+  findOne(id: number): Observable<Classgroup> {
+    return this.http.get<Classgroup>(`${this.url}${id}`);
+  }
+
+  findByEstablishment(id:number): Observable<Classgroup[]>{
+    return this.http.get<Classgroup[]>(`${this.url}${this.urlSuffixFindByEstablishment}${id}`);
+  }
+
   add(value: Classgroup): Observable<Classgroup>{
     return this.http.post<Classgroup>(`${this.url}`,value);
   }
@@ -25,7 +34,5 @@ export class ClassgroupService {
     return this.http.delete<void>(`${this.url}${id}`);
   }
 
-  findOne(id: number): Observable<Classgroup> {
-    return this.http.get<Classgroup>(`${this.url}${id}`);
-  }
+
 }
