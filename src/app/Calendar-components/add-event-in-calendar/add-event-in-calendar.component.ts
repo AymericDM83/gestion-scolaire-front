@@ -32,7 +32,8 @@ import { SubjectEnumerationColors } from '../../../model/subject.enumeration.col
 
 @Component({
   selector: 'app-add-event',
-  templateUrl: './add-event-in-calander.component.html',
+  templateUrl: './add-event-in-calendar.component.html',
+  styleUrls: ['./add-event-in-calendar.component.scss'],
 })
 export class AddEventInCalanderComponent implements OnInit {
   @Input() dateInfo: DateSelectArg | undefined;

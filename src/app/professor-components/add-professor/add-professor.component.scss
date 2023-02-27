@@ -5,9 +5,29 @@ h2 {
     font-size: 2rem;
     font-weight: 600;
 }
+
+h3 {
+    color: white;
+    margin-top: 10px;
+}
 ul {
     color: red;
     list-style-type: none;
+}
+
+.subjectBtn {
+    background-color: #ffc392 !important;
+    width: 20%;
+
+}
+label {
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px 0;
+ }
+
+.lesson-form-row {
+    display: flex;
 }
 
 form {

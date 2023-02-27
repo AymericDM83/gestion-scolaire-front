@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AddEventInCalanderComponent } from '../Calendar-components/add-event-in-calander/add-event-in-calander.component';
+import { AddEventInCalanderComponent } from '../Calendar-components/add-event-in-calendar/add-event-in-calendar.component';
 import { Observable } from 'rxjs';
 import { Establishment } from '../../model/establishment.model';
+import { EventInfo } from 'src/model/eventInfo.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,20 +13,20 @@ export class AddEventService {
   byEstablishmentSuffix = 'findbyestablishment/';
 
   constructor(private http: HttpClient) {}
-  findAll(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.url}`);
+  findAll(): Observable<EventInfo[]> {
+    return this.http.get<EventInfo[]>(`${this.url}`);
   }
-  add(value: Event): Observable<Event> {
-    return this.http.post<Event>(`${this.url}`, value);
+  add(value: EventInfo): Observable<EventInfo> {
+    return this.http.post<EventInfo>(`${this.url}`, value);
   }
   remove(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}${id}`);
   }
-  findOne(id: number): Observable<Event> {
-    return this.http.get<Event>(`${this.url}${id}`);
+  findOne(id: number): Observable<EventInfo> {
+    return this.http.get<EventInfo>(`${this.url}${id}`);
   }
-  findByEstablishment(id: number): Observable<Event[]> {
-    return this.http.get<Event[]>(
+  findByEstablishment(id: number): Observable<EventInfo[]> {
+    return this.http.get<EventInfo[]>(
       `${this.url}${this.byEstablishmentSuffix}${id}`
     );
   }
