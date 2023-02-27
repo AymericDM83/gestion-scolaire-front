@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EstablishmentListComponent } from './Establishment-components/establishment-list/establishment-list.component';
 import { AddEstablishmentComponent } from './Establishment-components/add-establishment/add-establishment.component';
@@ -27,14 +26,15 @@ import { ProfessorListComponent } from './professor-components/professor-list/pr
 import { ProfessorComponent } from './professor-components/professor/professor.component';
 import { ProfessorDetailsComponent } from './professor-components/professor-details/professor-details.component';
 import { AddProfessorComponent } from './professor-components/add-professor/add-professor.component';
-import { AddEventInCalanderComponent } from './add-event-in-calander/add-event-in-calander.component';
+import { AddEventInCalanderComponent } from './Calendar-components/add-event-in-calander/add-event-in-calander.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { CalanderComponent } from './calander/calander.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CalanderComponent } from './Calendar-components/calander/calander.component';
+// import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
   imports: [
     BrowserModule,
-
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
@@ -76,7 +75,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ReactiveFormsModule,
     NgbModule,
     FullCalendarModule,
-    DragDropModule,
+    // DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

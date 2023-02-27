@@ -23,12 +23,12 @@ import {
   NgbActiveModal,
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from '../../model/subject.model';
-import { Professor } from '../../model/professor.model';
-import { ProfessorService } from '../services/professor.service';
-import { SubjectService } from '../services/subject.service';
-import { CalenderService } from '../services/calender.service';
-import { SubjectEnumerationColors } from '../../model/subject.enumeration.colors';
+import { Subject } from '../../../model/subject.model';
+import { Professor } from '../../../model/professor.model';
+import { ProfessorService } from '../../services/professor.service';
+import { SubjectService } from '../../services/subject.service';
+import { CalenderService } from '../../services/calender.service';
+import { SubjectEnumerationColors } from '../../../model/subject.enumeration.colors';
 
 @Component({
   selector: 'app-add-event',

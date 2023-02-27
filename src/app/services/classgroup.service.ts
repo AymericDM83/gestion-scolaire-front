@@ -13,9 +13,7 @@ export class ClassgroupService {
 
   constructor(private http: HttpClient) {}
 
-
   private classgroups: Classgroup[] = [];
-
 
   findAll(): Observable<Classgroup[]> {
     return this.http.get<Classgroup[]>(`${this.url}`);
@@ -30,17 +28,13 @@ export class ClassgroupService {
   // Problème ici lorsqu'on veut ajouter un prof avec, probablement dans la formation du Json
   add(value: Classgroup): Observable<Classgroup> {
     return this.http.post<Classgroup>(`${this.url}`, value);
-    
+  }
+
   findOne(id: number): Observable<Classgroup> {
     return this.http.get<Classgroup>(`${this.url}${id}`);
   }
 
-  add(value: Classgroup): Observable<Classgroup>{
-    return this.http.post<Classgroup>(`${this.url}`,value);
-  }
   remove(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}${id}`);
   }
-
-
 }

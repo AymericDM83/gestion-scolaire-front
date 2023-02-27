@@ -26,58 +26,27 @@
     <input type="date" id="dateOfBirth" value="1900-01-01" formControlName="dateOfBirth" class="form-control">
   </div>
 
-  <!--
-  <fieldset formGroupName="subjects">
-    <legend> les matiére :</legend>
-    <div>
-      <label for="id"> choisi les matiere</label>
-      <select type="checkbox" id="id" formControlName="id" >
-        <option *ngFor=" let s of subjects " [value]="s.id"> {{s.professor}}</option>
-
   <h3>Ajouter une matiére:</h3>
 
-    <ng-container formArrayName="subjects">
-      <ng-container *ngFor="let subjectForm of subjectsFormArray.controls; let i = index">
-        <div class="lesson-form-row" [formGroupName]="i">
+  <ng-container formArrayName="subjects">
+    <ng-container *ngFor="let subjectForm of subjectsFormArray.controls; let i = index">
+      <div class="lesson-form-row" [formGroupName]="i">
 
-         <select formControlName="id"
-                        placeholder="nom de la matiére">
-           <option *ngFor="let subject of subjects" [value]="subject.id"> Matiétres : {{subject.name}}</option>
+        <select formControlName="id" placeholder="nom de la matiére">
+          <option *ngFor="let subject of subjects" [value]="subject.id"> Matiétres : {{subject.name}}</option>
 
-            </select>
->
-          <button class="delete-btn" (click)="deletSubject(i)">
-            supprimer la matiére</button>
-        </div>
-      </ng-container>
+        </select>
+        >
+        <button class="delete-btn" (click)="deletSubject(i)">
+          supprimer la matiére</button>
+      </div>
     </ng-container>
+  </ng-container>
 
- 
+
 
 
   <button type="button" class="btn btn-outline-dark" (click)="addSubject()"> ajouter une matiére</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <div class="form-group row">
     <div>
@@ -85,11 +54,4 @@
     </div>
   </div>
 
-
-
-
-
-
 </form>
-
-

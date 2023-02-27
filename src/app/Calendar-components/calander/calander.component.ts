@@ -19,15 +19,15 @@ import listPlugin from '@fullcalendar/list';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { createEventId, INITIAL_EVENTS } from './event-utils';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from '../../model/subject.model';
-import { Professor } from '../../model/professor.model';
+import { Subject } from '../../../model/subject.model';
+import { Professor } from '../../../model/professor.model';
 import { Event } from 'src/model/event.model';
-import { ProfessorService } from '../services/professor.service';
-import { SubjectService } from '../services/subject.service';
-import { CalenderService } from '../services/calender.service';
-import { SubjectEnumerationColors } from '../../model/subject.enumeration.colors';
+import { ProfessorService } from '../../services/professor.service';
+import { SubjectService } from '../../services/subject.service';
+import { CalenderService } from '../../services/calender.service';
+import { SubjectEnumerationColors } from '../../../model/subject.enumeration.colors';
 import { AddEventInCalanderComponent } from '../add-event-in-calander/add-event-in-calander.component';
-import {AddEventService} from "../services/add-event.service";
+import { AddEventService } from '../../services/add-event.service';
 
 @Component({
   selector: 'app-calander',

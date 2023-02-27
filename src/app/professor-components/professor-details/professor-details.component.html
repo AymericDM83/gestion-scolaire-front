@@ -11,7 +11,11 @@
     <li> Date de naissance: {{professor?.dateOfBirth}}</li>
     <li> Classe principale: {{professor?.principalClass?.name}}</li>
     <li> Etablissement: {{professor?.establishment?.name}}</li>
-    <li> Matière(s): {{professor?.subjects}}</li>
+    <li>Liste des matières :</li>
+    <ul>
+
+      <li *ngFor="let s of professor?.subjects"> {{s.name}} </li>
+    </ul>
   </ul>
 </div>
 
