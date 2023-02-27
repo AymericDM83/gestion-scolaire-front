@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AddEventInCalanderComponent } from '../Calendar-components/add-event-in-calendar/add-event-in-calendar.component';
 import { Observable } from 'rxjs';
-import { Establishment } from '../../model/establishment.model';
-import { EventInfo } from 'src/model/eventInfo.model';
+import {EventInfo} from "../../model/eventInfo.model";
 
 @Injectable({
   providedIn: 'root',
 })
-export class AddEventService {
-  url = `http://localhost:8090/api/events/`;
+export class AddEventInfoService {
+  url = `http://localhost:8090/api/EventInfos/`;
   byEstablishmentSuffix = 'findbyestablishment/';
 
   constructor(private http: HttpClient) {}
