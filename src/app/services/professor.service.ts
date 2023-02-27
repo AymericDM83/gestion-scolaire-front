@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Professor } from '../../model/professor.model';
 import { Observable } from 'rxjs';
+import {Classroom} from "../../model/classroom.model";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfessorService {
   url = `http://localhost:8090/api/professors/`;
+
   byEstablishmentSuffix = `findbyestablishment/`;
+
 
   constructor(private http: HttpClient) {}
   findAll(): Observable<Professor[]> {

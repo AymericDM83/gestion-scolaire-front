@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfessorService } from '../../services/professor.service';
 import { EstablishmentService } from 'src/app/services/establishment.service';
 import { Establishment } from 'src/model/establishment.model';
+import {Subject} from "../../../model/subject.model";
 
 @Component({
   selector: 'app-professor-details',
@@ -13,6 +14,7 @@ import { Establishment } from 'src/model/establishment.model';
 })
 export class ProfessorDetailsComponent implements OnInit {
   professor!: Professor;
+  subjects: Subject[] =[]
   currentModal: NgbModalRef | undefined;
   establishment!: Establishment;
   constructor(

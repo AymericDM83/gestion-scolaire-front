@@ -1,3 +1,4 @@
+
 <h2>Liste des matieres</h2>
 <button class="backBtn" [routerLink]="['/establishments/', eId]"> Retour à l'accueil de l'établissement </button>
 <div class="subject-list">
@@ -5,5 +6,6 @@
 
 
   <app-subject *ngFor=" let subject of subjects" [subject]="subject"> </app-subject>
+
 </div>
 <button type="button" class="btn btn-outline-dark" routerLink="add"> Ajouter une matière </button>

@@ -27,10 +27,14 @@ import { ProfessorListComponent } from './professor-components/professor-list/pr
 import { ProfessorComponent } from './professor-components/professor/professor.component';
 import { ProfessorDetailsComponent } from './professor-components/professor-details/professor-details.component';
 import { AddProfessorComponent } from './professor-components/add-professor/add-professor.component';
+import { AddEventInCalanderComponent } from './add-event-in-calander/add-event-in-calander.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalanderComponent } from './calander/calander.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfessorDetailsComponent,
     AddProfessorComponent,
     HomeComponent,
+    CalanderComponent,
+    AddEventInCalanderComponent,
   ],
 
   imports: [
@@ -68,7 +74,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    FullCalendarModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

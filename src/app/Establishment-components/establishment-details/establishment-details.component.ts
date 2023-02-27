@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassgroupService } from 'src/app/services/classgroup.service';
 import { ClassroomService } from 'src/app/services/classroom.service';
@@ -9,6 +9,7 @@ import { Classroom } from 'src/model/classroom.model';
 import { Establishment } from 'src/model/establishment.model';
 import { Professor } from 'src/model/professor.model';
 
+
 @Component({
   selector: 'app-establishment-details',
   templateUrl: './establishment-details.component.html',
@@ -16,6 +17,9 @@ import { Professor } from 'src/model/professor.model';
 })
 export class EstablishmentDetailsComponent implements OnInit {
   establishment!: Establishment;
+  classgroups: Classgroup[] = [];
+  classrooms: Classroom[] = [];
+  professors: Professor[] = [];
 
   professors: Professor[] = [];
   classrooms: Classroom[] = [];

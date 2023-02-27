@@ -5,7 +5,6 @@
   <h3>{{professor?.firstname}} {{professor?.lastname}}</h3>
 
   <ul>
-
     <li> Id: {{professor?.id}} </li>
     <li> Nom: {{professor?.firstname}}</li>
     <li> Prénom: {{professor?.lastname}}</li>
@@ -15,6 +14,7 @@
     <li> Matière(s): {{professor?.subjects}}</li>
   </ul>
 </div>
+
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Suppression</h4>
