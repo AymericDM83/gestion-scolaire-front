@@ -21,7 +21,7 @@ import { createEventId, INITIAL_EVENTS } from './event-utils';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from '../../model/subject.model';
 import { Professor } from '../../model/professor.model';
-import { Event } from 'src/model/event.model';
+import { EventIfo} from 'src/model/eventInfo.model';
 import { ProfessorService } from '../services/professor.service';
 import { SubjectService } from '../services/subject.service';
 import { CalenderService } from '../services/calender.service';
@@ -40,7 +40,8 @@ export class CalanderComponent implements OnInit {
 
   subjects: Subject[] = [];
   professors: Professor[] = [];
-  Myevent!: Event;
+  eventsInfos: EventIfo[] =[];
+  eventInfo!: EventIfo;
   currentEvents: EventApi[] = [];
   currentModal: NgbModalRef | undefined;
 
@@ -94,6 +95,7 @@ export class CalanderComponent implements OnInit {
     this.professorService.findAll().subscribe((allprofessors) => {
       this.professors = allprofessors;
     });
+    this.addEventService.findAll().subscribe((allevents)=> this.eventsInfos = allevents)
   }
 
   handleCalendarToggle() {
@@ -129,14 +131,14 @@ export class CalanderComponent implements OnInit {
       backdrop: 'static',
     });
     this.currentModal.componentInstance.dateInfo = dateInfo;
-    this.currentModal.result.then((Event) => {
-      if (Event) {
+    this.currentModal.result.then((EventInfo) => {
+      this.addEventService.add(EventInfo).subscribe((allevents)=> {this.eventInfo = allevents})
+      if (EventInfo) {
         const calendarApi = dateInfo.view.calendar;
         calendarApi.unselect();
-
         calendarApi.addEvent({
           id: createEventId(),
-          title: Event.subject,
+          title: EventInfo.subject,
           start: dateInfo.start,
           end: dateInfo.end,
           allDay: dateInfo.allDay,
