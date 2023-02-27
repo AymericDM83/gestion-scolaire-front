@@ -10,6 +10,14 @@ import { Establishment } from 'src/model/establishment.model';
 })
 export class EstablishmentDetailsComponent implements OnInit {
   establishment!: Establishment;
+<<<<<<< Updated upstream
+=======
+  classgroups: Classgroup[] = [];
+  classrooms: Classroom[] = [];
+  professors: Professor[] = [];
+
+
+>>>>>>> Stashed changes
 
   constructor(
     private activatedRoute: ActivatedRoute,
