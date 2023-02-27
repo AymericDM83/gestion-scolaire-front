@@ -1,23 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import {Classgroup} from "../../../model/classgroup.model";
-import {ClassgroupService} from "../../services/classgroup.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Classgroup } from '../../../model/classgroup.model';
+import { ClassgroupService } from '../../services/classgroup.service';
 
 @Component({
   selector: 'app-classgroup-list',
   templateUrl: './classgroup-list.component.html',
-  styleUrls: ['./classgroup-list.component.scss']
+  styleUrls: ['./classgroup-list.component.scss'],
 })
-export class ClassgroupListComponent implements OnInit{
-
+export class ClassgroupListComponent implements OnInit {
   selectedClassgroup: Classgroup | undefined;
   classgroups: Classgroup[] = [];
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
 
-  constructor(private classgroupService: ClassgroupService) {}
+  constructor(
+    private classgroupService: ClassgroupService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.classgroupService.findAll()
-      .subscribe(cgs => this.classgroups = cgs)
+    const id = this.activatedRoute.snapshot.paramMap.get('eId') || '';
+    if (id !== '') {
+      this.classgroupService
+        .findByEstablishment(+id)
+        .subscribe((cgs) => (this.classgroups = cgs));
+    }
   }
-
-
 }

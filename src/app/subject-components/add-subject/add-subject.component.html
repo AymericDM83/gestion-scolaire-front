@@ -1,33 +1,33 @@
-<h3>Ajouter un matiére </h3>
+<button type="button" class="backBtn" [routerLink]="['/establishments/', eId, '\subjects']"> Retour à la
+  liste des matières </button>
+<h2>Ajouter une matière </h2>
 <ul *ngIf="formSubmitted">
 
   <li *ngIf="subjectForm.controls['name'].errors?.['required']"> entree un matiére !</li>
   <li *ngIf="subjectForm.controls['color'].errors?.['required']"> choisi une couleur </li>
-  <li *ngIf="subjectForm.controls['professor'].errors?.['required']"> entrer un professeur</li>
+  <!-- <li *ngIf="subjectForm.controls['professor'].errors?.['required']"> entrer un professeur</li> -->
 </ul>
 
 <form [formGroup]="subjectForm" (ngSubmit)="submitForm()">
 
-<div class="form-group">
-  <label for="name"> matiére </label>
-  <input type="text" id="name" formControlName="name" class="form-control">
-</div>
+  <div class="form-group">
+    <label for="name"> Nom de la matière </label>
+    <input type="text" id="name" formControlName="name" class="form-control">
+  </div>
 
-  <fieldset >
-    <legend> couleur de la matiére :</legend>
-    <div class="form-group form-check">
-      <label for="color"> choisir une couleur </label>
-      <select type="checkbox" id="color" formControlName="color"  >
-        <option [style.color]="'red' " value="RED"> ROUGE</option>
-        <option [style.color]="'grey' " value="GREY">GRIS</option>
-        <option [style.color]="'blue' " value="BLUE"> BLUE</option>
-        <option [style.color]="'lightblue' " value="LIGHTBLUE"> BLUE CIEL</option>
-        <option [style.color]="'Yellow' " value="YELLOW">YELLOW</option>
-      </select>
-    </div>
 
-  </fieldset>
-<!--
+  <div class="form-group">
+    <label for="color"> Couleur de la matière </label>
+    <select type="checkbox" id="color" formControlName="color">
+      <option [style.color]="'red' " value="RED"> ROUGE</option>
+      <option [style.color]="'grey' " value="GREY">GRIS</option>
+      <option [style.color]="'blue' " value="BLUE"> BLUE</option>
+      <option [style.color]="'lightblue' " value="LIGHTBLUE"> BLUE CIEL</option>
+      <option [style.color]="'Yellow' " value="YELLOW">YELLOW</option>
+    </select>
+  </div>
+
+  <!--
   <fieldset formGroupName="professor">
     <legend> la liste des professeurs :</legend>
     <div>
@@ -40,7 +40,7 @@
 
   </fieldset> -->
   <div class="form-group row">
-    <div class="col-sm-10">
+    <div>
       <button type="submit" class="btn btn-primary">Envoyer</button>
     </div>
   </div>

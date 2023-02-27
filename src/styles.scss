@@ -2,8 +2,11 @@
 @import 'bootstrap/scss/bootstrap';
 body {
     font-family: sans-serif;
-    padding: 0;
-    margin: 0;
+    padding: 2%;
+    margin: 0 auto;
     box-sizing: border-box;
+    background-color: #4b5563;
+    max-width: 1300px;
 }
+ul {list-style-type: none;}
 

@@ -1,9 +1,8 @@
-<h2>Liste des établissements</h2>
+<h2>Veuillez choisir un établissement</h2>
 <div>
     <ul *ngFor="let e of establishments">
         <li [routerLink]="['/establishments', e.id]">
-            <p> {{e.type}} {{e.name}} </p>
-
+            <p> {{e.name}} </p>
         </li>
     </ul>
 </div>

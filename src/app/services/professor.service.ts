@@ -9,19 +9,23 @@ import {Classroom} from "../../model/classroom.model";
 })
 export class ProfessorService {
   url = `http://localhost:8090/api/professors/`;
-  urlSuffixFindByEstablishment = 'findbyestablishment/'
+
+  byEstablishmentSuffix = `findbyestablishment/`;
+
 
   constructor(private http: HttpClient) {}
   findAll(): Observable<Professor[]> {
     return this.http.get<Professor[]>(`${this.url}`);
   }
 
-  findByEstablishment(id:number): Observable<Professor[]>{
-    return this.http.get<Professor[]>(`${this.url}${this.urlSuffixFindByEstablishment}${id}`);
-  }
-
   findOne(id: number): Observable<Professor> {
     return this.http.get<Professor>(`${this.url}${id}`);
+  }
+
+  findByEstablishment(id: number): Observable<Professor[]> {
+    return this.http.get<Professor[]>(
+      `${this.url}${this.byEstablishmentSuffix}${id}`
+    );
   }
 
   add(value: Professor): Observable<Professor> {

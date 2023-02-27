@@ -13,7 +13,8 @@ import {Subject} from "../../../model/subject.model";
 export class AddProfessorComponent implements OnInit {
   professorForm!: FormGroup;
   formSubmitted = false;
-  subjects: Subject[] =[]
+  subjects: Subject[] = [];
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
 
   get subjectsFormArray() {
     return this.professorForm.controls["subjects"] as FormArray;
@@ -34,6 +35,10 @@ export class AddProfessorComponent implements OnInit {
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
+      establishment: {
+        id: this.eId,
+      },
+      /* subjects: this.formBuilder.group({id : null}),*/
       subjects: this.formBuilder.array([])
     });
     this.subjectService.findAll().subscribe(allsubjects => {

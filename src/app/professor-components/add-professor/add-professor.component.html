@@ -1,9 +1,12 @@
-<h1> Ajouter un professeur</h1>
+<button type="button" class="backBtn" [routerLink]="['/establishments/', eId, '\professors']"> Retour à la
+  liste des professeurs </button>
+
+<h2> Ajouter un professeur</h2>
 <ul *ngIf="formSubmitted">
 
-  <li *ngIf="professorForm.controls['lastname'].errors?.['required']" > entrer un nom valide !</li>
-  <li *ngIf="professorForm.controls['firstname'].errors?.['required']"> entrer un prenom valide!</li>
-  <li *ngIf="professorForm.controls['dateOfBirth'].errors?.['required']"> entrer une date de naissance valide</li>
+  <li *ngIf="professorForm.controls['lastname'].errors?.['required']"> Veuillez entrer un nom</li>
+  <li *ngIf="professorForm.controls['firstname'].errors?.['required']"> Veuillez entrer un prénom</li>
+  <li *ngIf="professorForm.controls['dateOfBirth'].errors?.['required']"> Veuillez entrer une date de naissance</li>
 
 </ul>
 <form [formGroup]="professorForm" (ngSubmit)="submitForm()">
@@ -20,9 +23,16 @@
 
   <div class="form-group">
     <label for="dateOfBirth"> Date de naissance </label>
-    <input type="date" id="dateOfBirth"  value="1900-01-01" formControlName="dateOfBirth" class="form-control">
+    <input type="date" id="dateOfBirth" value="1900-01-01" formControlName="dateOfBirth" class="form-control">
   </div>
 
+  <!--
+  <fieldset formGroupName="subjects">
+    <legend> les matiére :</legend>
+    <div>
+      <label for="id"> choisi les matiere</label>
+      <select type="checkbox" id="id" formControlName="id" >
+        <option *ngFor=" let s of subjects " [value]="s.id"> {{s.professor}}</option>
 
   <h3>Ajouter une matiére:</h3>
 
@@ -70,10 +80,16 @@
 
 
   <div class="form-group row">
-    <div class="col-sm-10">
+    <div>
       <button type="submit" class="btn btn-primary"> Ajouter </button>
     </div>
   </div>
 
 
+
+
+
+
 </form>
+
+

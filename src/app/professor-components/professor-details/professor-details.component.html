@@ -1,30 +1,28 @@
-<p>description de professeure: {{professor?.firstname}} {{professor?.lastname}}</p>
+<button type="button" class="backBtn" [routerLink]="['/establishments/', eId, '\professors']"> Retour à la
+  liste des professeurs </button>
 
-<button type="button" class="btn btn-outline-dark" [routerLink]="['/establishments/', eId, '\professors']"> Retour à la liste des professeurs </button>
+<div class="professorInfos">
+  <h3>{{professor?.firstname}} {{professor?.lastname}}</h3>
 
-
-<ul>
-
-  <li> <b> Idenfication: </b> {{professor?.id}} </li>
-  <li> <b> Nom: </b> {{professor?.firstname}}</li>
-  <li><b> Prénom: </b> {{professor?.lastname}}</li>
-  <li> <b> Date de naissance: </b> {{professor?.dateOfBirth}}</li>
-  <li><b> la classe principale: </b> {{professor?.principalClass}}</li>
-  <li><b> Etablissement: </b> {{professor?.establishment}}</li>
-  <li><b> La liste des matiéres : </b>  </li>
   <ul>
-    <li  *ngFor=" let subject of professor?.subjects "><b>   </b> {{subject.name}}</li>
+    <li> Id: {{professor?.id}} </li>
+    <li> Nom: {{professor?.firstname}}</li>
+    <li> Prénom: {{professor?.lastname}}</li>
+    <li> Date de naissance: {{professor?.dateOfBirth}}</li>
+    <li> Classe principale: {{professor?.principalClass?.name}}</li>
+    <li> Etablissement: {{professor?.establishment?.name}}</li>
+    <li> Matière(s): {{professor?.subjects}}</li>
   </ul>
+</div>
 
-</ul>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Suppression</h4>
   </div>
   <div class="modal-body">
     <form>
       <div class="mb-3">
-        VOULEZ-VOUS VRAIMENT SUPPRIMER LE PROFESSEUR ?
+        Voulez-vous vraiment supprimer ce professeur ?
       </div>
     </form>
   </div>
@@ -34,4 +32,4 @@
 
   </div>
 </ng-template>
-<button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer le professeur </button>
+<button type="button" class=" btn btn-outline-dark deleteBtn" (click)="open(content)"> Supprimer le professeur </button>

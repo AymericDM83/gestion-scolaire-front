@@ -1,13 +1,16 @@
-<p>description de class: {{classroom?.name}}</p>
-<button type="button" class="btn btn-outline-dark" [routerLink]="['/establishments/', eId, '\classrooms']"> Retour de la liste des classes </button>
+<button type="button" class="backBtn" [routerLink]="['/establishments/', eId, '\classrooms']"> Retour de la liste des
+  classes </button>
 
-<ul>
+<div class="classroomInfos">
+  <h3>La classe: {{classroom?.name}}</h3>
+  <ul>
 
-  <li> <b> Idenfication: </b> {{classroom?.id}} </li>
-  <li> <b> capacity: </b> {{classroom?.capacity}}</li>
-  <li> <b> Etablissemnt: </b> {{classroom?.establishment?.name}}</li>
+    <li> <b> Id: </b> {{classroom?.id}} </li>
+    <li> <b> Capacité: </b> {{classroom?.capacity}}</li>
+    <li> <b> Etablissemnt: </b> {{classroom?.establishment?.name}}</li>
 
-</ul>
+  </ul>
+</div>
 
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -16,7 +19,7 @@
   <div class="modal-body">
     <form>
       <div class="mb-3">
-        VOULEZ-VOUS VRAIMENT CETTE CLASSE?
+        Voulez-vous vraiment supprimer cette classe ?
       </div>
     </form>
   </div>
@@ -26,4 +29,4 @@
 
   </div>
 </ng-template>
-<button type="button" class="btn btn-outline-dark" (click)="open(content)"> Supprimer </button>
+<button type="button" class="btn btn-outline-dark deleteBtn" (click)="open(content)"> Supprimer </button>
