@@ -34,7 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
 // import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
-import { AddEventInCalanderComponent } from './Calendar-components/add-event-in-calendar/add-event-in-calendar.component';
+import { AddEventInCalendarComponent } from './Calendar-components/add-event-in-calendar/add-event-in-calendar.component';
 import { CalanderComponent } from './Calendar-components/calendar/calendar.component';
 
 @NgModule({
@@ -64,7 +64,7 @@ import { CalanderComponent } from './Calendar-components/calendar/calendar.compo
     AddProfessorComponent,
     HomeComponent,
     CalanderComponent,
-    AddEventInCalanderComponent,
+    AddEventInCalendarComponent,
   ],
 
   imports: [

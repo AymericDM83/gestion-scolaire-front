@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { ClassgroupListComponent } from './classgroup-components/classgroup-list/classgroup-list.component';
 import { AddClassroomComponent } from './classroom-components/add-classroom/add-classroom.component';
 import { ClassroomDetailsComponent } from './classroom-components/classroom-details/classroom-details.component';
-import { CalendarComponent } from './Calendar-components/calendar/calendar.component';
+import { CalanderComponent } from './Calendar-components/calendar/calendar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -65,7 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'establishments/:eId/calendar',
-    component: CalendarComponent,
+    component: CalanderComponent,
   },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
