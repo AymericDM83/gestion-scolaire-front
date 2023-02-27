@@ -11,7 +11,11 @@
   <li> <b> Date de naissance: </b> {{professor?.dateOfBirth}}</li>
   <li><b> la classe principale: </b> {{professor?.principalClass}}</li>
   <li><b> Etablissement: </b> {{professor?.establishment}}</li>
-  <li><b> les / la matiere: </b> {{professor?.subjects}}</li>
+  <li><b> La liste des matiéres : </b>  </li>
+  <ul>
+    <li  *ngFor=" let subject of professor?.subjects "><b>   </b> {{subject.name}}</li>
+  </ul>
+
 </ul>
 <ng-template #content let-modal>
   <div class="modal-header">
