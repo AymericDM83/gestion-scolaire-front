@@ -5,11 +5,29 @@
 
 
 <div class="establishmentInfos">
-    <p>Professeurs de l'établissement ICI</p>
-    <p>Matières de l'établissement ICI</p>
-    <p>Classes de l'établissement ICI</p>
-    <p>Salles de classe de l'établissement ICI</p>
+    <div class="establishmentInfos__professors">
+        <p>Liste des professeurs de cet établissement :</p>
+        <ul>
+            <li *ngFor="let p of professors"> {{p?.firstname}} {{p?.lastname}} </li>
+        </ul>
+    </div>
+
+    <div class="establishmentInfos__classrooms">
+        <p>Liste des salles de classes de cet établissement :</p>
+        <ul>
+            <li *ngFor="let c of classrooms"> {{c?.name}} </li>
+        </ul>
+    </div>
+
+    <div class="establishmentInfos__classgroups">
+        <p>Liste des classes de cet établissement :</p>
+        <ul>
+            <li *ngFor="let cg of classgroups"> {{cg?.name}} </li>
+        </ul>
+    </div>
 </div>
+
+
 
 <div class="btnBox">
     <button> Modifier l'établissement </button>

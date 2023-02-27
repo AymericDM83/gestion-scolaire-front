@@ -22,7 +22,10 @@ export class ProfessorListComponent implements OnInit {
     if (id !== '') {
       this.professorService
         .findByEstablishment(+id)
-        .subscribe((allProfessors) => (this.professors = allProfessors));
+        .subscribe((allProfessors) => {
+          this.professors = allProfessors;
+          console.log(allProfessors);
+        });
     }
   }
 }
