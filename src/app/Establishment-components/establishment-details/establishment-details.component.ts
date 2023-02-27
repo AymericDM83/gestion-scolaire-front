@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ClassgroupService } from 'src/app/services/classgroup.service';
 import { ClassroomService } from 'src/app/services/classroom.service';
 import { EstablishmentService } from 'src/app/services/establishment.service';
@@ -19,6 +20,7 @@ export class EstablishmentDetailsComponent implements OnInit {
   classgroups: Classgroup[] = [];
   classrooms: Classroom[] = [];
   professors: Professor[] = [];
+  currentModal: NgbModalRef | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,7 +28,8 @@ export class EstablishmentDetailsComponent implements OnInit {
     private router: Router,
     private professorService: ProfessorService,
     private classroomsService: ClassroomService,
-    private classgroupsService: ClassgroupService
+    private classgroupsService: ClassgroupService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -50,5 +53,19 @@ export class EstablishmentDetailsComponent implements OnInit {
     if (id !== '') {
       this.ests.deleteOne(+id).subscribe(() => this.router.navigateByUrl('/'));
     }
+  }
+
+  removeEstablishment() {
+    const eId = this.activatedRoute.snapshot.paramMap.get('eId');
+    this.ests.deleteOne(this.establishment.id).subscribe(() => {
+      this.currentModal?.close();
+      this.router.navigateByUrl('/');
+    });
+  }
+
+  open(content: any) {
+    this.currentModal = this.modalService.open(content, {
+      backdrop: 'static',
+    });
   }
 }

@@ -27,10 +27,21 @@
     </div>
 </div>
 
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Suppression</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                Voulez-vous vraiment supprimer l'établissement?
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="removeEstablishment()">Oui</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Non</button>
 
-
-<div class="btnBox">
-    <button> Modifier l'établissement </button>
-    <button class="deleteBtn"> Supprimer l'établissement </button>
-</div>
-
+    </div>
+</ng-template>
+<button type="button" class="deleteBtn" (click)="open(content)"> Supprimer l'établissement </button>

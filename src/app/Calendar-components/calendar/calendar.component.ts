@@ -21,26 +21,28 @@ import { createEventId, INITIAL_EVENTS } from './event-utils';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from '../../../model/subject.model';
 import { Professor } from '../../../model/professor.model';
-import { Event } from 'src/model/event.model';
+import { EventInfo } from 'src/model/eventInfo.model';
 import { ProfessorService } from '../../services/professor.service';
 import { SubjectService } from '../../services/subject.service';
 import { CalenderService } from '../../services/calender.service';
 import { SubjectEnumerationColors } from '../../../model/subject.enumeration.colors';
-import { AddEventInCalanderComponent } from '../add-event-in-calander/add-event-in-calander.component';
-import { AddEventService } from '../../services/add-event.service';
+import { AddEventInfoService } from '../../services/add-event.service';
+import { AddEventInCalendarComponent } from '../add-event-in-calendar/add-event-in-calendar.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-calander',
-  templateUrl: './calander.component.html',
-  styleUrls: ['./calander.component.scss'],
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalanderComponent implements OnInit {
   calendarVisible = false;
   calendeForm!: FormGroup;
-
+  eId = this.activatedRoute.snapshot.paramMap.get('eId');
   subjects: Subject[] = [];
   professors: Professor[] = [];
-  Myevent!: Event;
+  eventsInfos: EventInfo[] = [];
+  eventInfo!: EventInfo;
   currentEvents: EventApi[] = [];
   currentModal: NgbModalRef | undefined;
 
@@ -77,7 +79,8 @@ export class CalanderComponent implements OnInit {
     private professorService: ProfessorService,
     private subjectService: SubjectService,
     private calenderService: CalenderService,
-    private addEventService: AddEventService
+    private addEventInfoService: AddEventInfoService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -93,6 +96,9 @@ export class CalanderComponent implements OnInit {
     });
     this.professorService.findAll().subscribe((allprofessors) => {
       this.professors = allprofessors;
+    });
+    this.addEventInfoService.findAll().subscribe((allevents) => {
+      this.eventsInfos = allevents;
     });
   }
 
@@ -125,43 +131,23 @@ export class CalanderComponent implements OnInit {
   }
 
   openAddEventModal(dateInfo: DateSelectArg) {
-    this.currentModal = this.modalService.open(AddEventInCalanderComponent, {
+    this.currentModal = this.modalService.open(AddEventInCalendarComponent, {
       backdrop: 'static',
     });
     this.currentModal.componentInstance.dateInfo = dateInfo;
-    this.currentModal.result.then((Event) => {
-      if (Event) {
+    this.currentModal.result.then((EventInfo) => {
+      if (EventInfo) {
         const calendarApi = dateInfo.view.calendar;
         calendarApi.unselect();
 
         calendarApi.addEvent({
           id: createEventId(),
-          title: Event.subject,
+          title: EventInfo.subject,
           start: dateInfo.start,
           end: dateInfo.end,
           allDay: dateInfo.allDay,
         });
       }
     });
-  }
-
-  addSubject() {
-    const subjectForm = this.formBuilder.group({
-      id: [null, Validators.required],
-    });
-    this.subjectsFormArray.push(subjectForm);
-  }
-  deletSubject(subjectIndex: number) {
-    this.subjectsFormArray.removeAt(subjectIndex);
-  }
-
-  addProfessor() {
-    const professorForm = this.formBuilder.group({
-      id: [null, Validators.required],
-    });
-    this.professorFormArray.push(professorForm);
-  }
-  deletProfessor(ProfessorIndex: number) {
-    this.professorFormArray.removeAt(ProfessorIndex);
   }
 }

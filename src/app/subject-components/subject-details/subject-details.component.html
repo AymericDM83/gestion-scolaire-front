@@ -6,19 +6,18 @@
 
     <li> Id : {{subject?.id}} </li>
     <li> Nom de la matière: {{subject?.name}}</li>
-    <li> Professeurs de cette matière : {{subject?.professor}}</li>
     <li> Couleur de la matière : {{subject?.color}}</li>
 
   </ul>
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title"> Supression se matiéte </h4>
+    <h4 class="modal-title" id="modal-basic-title"> Supression d'une matière </h4>
   </div>
   <div class="modal-body">
     <form>
       <div class="mb-3">
-        vous ete sure de supprimer la matiere ?
+        Vouslez-vous vraiment supprimer la matière ?
       </div>
     </form>
   </div>
@@ -29,3 +28,4 @@
   </div>
 </ng-template>
 <button type="button" class="btn btn-outline-dark deleteBtn" (click)="open(content)"> Supprimer </button>
+<h3> Attention, il est impossible de supprimer une matière qui est attribué à un professeur</h3>
